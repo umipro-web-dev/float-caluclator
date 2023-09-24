@@ -1,0 +1,31 @@
+{
+  "name": "float-caluclator",
+  "private": false,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/floatCaluclator.umd.cjs",
+  "types": "./dist/main.d.ts",
+  "module": "./dist/floatCaluclator.mjs",
+  "exports": {
+    "import": "./dist/floatCaluclator.mjs",
+    "require": "./dist/floatCaluclator.umd.cjs"
+  },
+  "scripts": {
+    "build": "tsc && vite build",
+    "test": "vitest run",
+	"lint": "bash ./lint.sh"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "eslint": "^8.45.0",
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "vitest": "^0.33.0"
+  }
+}
