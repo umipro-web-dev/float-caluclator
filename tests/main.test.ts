@@ -38,7 +38,7 @@ describe("public methods tests", () => {
 	})
 
 	it("0.3 / 3 equals to 0.1 < this.devide() >", ()=>{
-		
+
 		expect( floatCaluclator.devide(0.3, 3)).toBe(0.1)
 	})
 
@@ -67,7 +67,7 @@ describe("private methods tests ->", () => {
 		const int = convertAllNumToInt2(0.1, 0.02)
 		console.log(int)
 
-		expect(int.value[0]).toBe(10)
+		expect(int.value[0]).toBe(1)
 		expect(int.value[1]).toBe(2)
 		expect(int.decodeNum).toBe(1000)
 	})

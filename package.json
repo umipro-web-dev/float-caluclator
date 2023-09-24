@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "tsc && vite build",
-    "test": "vitest run",
+    "test": "npm run build && vitest run",
 	"lint": "bash ./lint.sh"
   },
   "devDependencies": {
