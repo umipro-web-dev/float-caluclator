@@ -15,17 +15,21 @@ const convertAllNumToInt2 = (...floatNums: number[]): convertAllNumToIntType => 
 				
 	})
 
+	let cntOf10Times = 0
+	
 
-	const decodeNum = 10 ** decimalLengthArr.reduce((prev, now) => prev+now)
+	const intNums = floatNums.map((val, idx) => {
 
-	const forConvetingToIntNum = 10 ** Math.max(...decimalLengthArr)
+		cntOf10Times += decimalLengthArr[idx]
 
-	const intNums = floatNums.map(val => val * forConvetingToIntNum)
+		return val * (10**decimalLengthArr[idx])
+		}
+	)
 
 	return {
 
 		value: intNums,
-		decodeNum: decodeNum
+		decodeNum: 10**cntOf10Times
 
 	} as const
 
