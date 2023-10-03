@@ -30,7 +30,7 @@ jobs:
               title: commitMsg,
               base: "${{ env.BASE_BRANCH }}",
               head: currentBranch,
-              body: "テスト通るかな"
+              body: "プルリクです"
               })
 
             const pulls = await github.pulls.list({
