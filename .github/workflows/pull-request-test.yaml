@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           SHA: ${{ github.sha }}
           OWNER: umipro-web-dev
           REPO: float-caluclator
@@ -25,7 +25,7 @@ jobs:
       - run: echo $LINT_RESULT
       - run: RESULTS_CODE=$((TEST_RESULT_CODE+TEST_RESULT_CODE))
       - run: |
-          if [ $RESULTS_CODE = 0 ]; then
+          if [ $RESULTS_CODE -eq 0 ]; then
             gh api -X POST -f state="success" /repos/${OWNER}/${REPO}/statuses/${SHA}
           else
             gh api -X POST -f state="failure" /repos/${OWNER}/${REPO}/statuses/${SHA}
