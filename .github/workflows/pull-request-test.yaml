@@ -1,7 +1,7 @@
 name: pull-request-test
 on: [pull_request]
 jobs:
-  build:
+  pull-request-test:
     runs-on: ubuntu-latest
     steps:
       - env:
