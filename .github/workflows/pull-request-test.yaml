@@ -23,9 +23,9 @@ jobs:
       - run: LINT_RESULT=$(npm run lint)
       - run: LINT_RESULT_CODE=$?
       - run: echo $LINT_RESULT
-      - run: RESULTS_CODE=$((TEST_RESULT_CODE+TEST_RESULT_CODE))
+      - run: RESULTS_CODE=$((TEST_RESULT_CODE+LINT_RESULT_CODE))
       - run: |
-          if [ $RESULTS_CODE -eq 0 ]; then
+          if [ $RESULTS_CODE = 0 ]; then
             gh api -X POST -f state="success" /repos/${OWNER}/${REPO}/statuses/${SHA}
           else
             gh api -X POST -f state="failure" /repos/${OWNER}/${REPO}/statuses/${SHA}
