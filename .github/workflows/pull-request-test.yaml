@@ -2,14 +2,16 @@ name: pull-request-test
 on: [pull_request]
 env:
   GH_TOKEN: ${{ github.token }}
+  SHA: ${{ github.sha }}
+  OWNER: umipro-web-dev
+  REPO: float-caluclator
 jobs:
   pull-request-test:
     runs-on: ubuntu-latest
     steps:
       - env:
-          SHA: ${{ github.sha }}
-          OWNER: umipro-web-dev
-          REPO: float-caluclator
+          AA: "aa"
+          
 
         uses: actions/checkout@v4
       - name: installing node
@@ -17,6 +19,7 @@ jobs:
         with: 
           node-version: 20.x
       - run: npm ci
+      - run: echo ${OWNER}
       - run: TEST_RESULT=$(npm run test)
       - run: TEST_RESULT_CODE=$?
       - run: echo $TEST_RESULT
