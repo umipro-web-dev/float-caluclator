@@ -2,7 +2,7 @@ name: pull-request-test
 on: [pull_request]
 env:
   GH_TOKEN: ${{ github.token }}
-  SHA: ${{ github.sha }}
+  SHA: ${{ github.event.pull_request.head.sha }}
   OWNER: umipro-web-dev
   REPO: float-caluclator
 jobs:
