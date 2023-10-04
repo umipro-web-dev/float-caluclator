@@ -33,13 +33,13 @@ describe("public methods tests", () => {
 	// 積を出力する関数のテスト
 	it("0.3 * 1.5 equals to 0.45 < this.multi() >", () => {
 
-		expect(floatCaluclator.multi(0.3, 1.5)).toBe(0.45)
+		expect(floatCaluclator.product(0.3, 1.5)).toBe(0.45)
 
 	})
 
 	it("0.3 / 3 equals to 0.1 < this.devide() >", ()=>{
 
-		expect( floatCaluclator.devide(0.3, 3)).toBe(0.1)
+		expect( floatCaluclator.quotient(0.3, 3)).toBe(0.1)
 	})
 
 
