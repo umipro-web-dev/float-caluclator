@@ -18,19 +18,21 @@ jobs:
         uses: actions/setup-node@v3
         with: 
           node-version: 20.x
-      - run: npm ci
-      - run: echo ${OWNER}
-      - run: TEST_RESULT=$(npm run test)
-      - run: TEST_RESULT_CODE=$?
-      - run: echo $TEST_RESULT
-      - run: LINT_RESULT=$(npm run lint)
-      - run: LINT_RESULT_CODE=$?
-      - run: echo $LINT_RESULT
-      - run: RESULTS_CODE=$((TEST_RESULT_CODE+LINT_RESULT_CODE))
       - run: |
+          npm ci
+          echo ${OWNER}
+          TEST_RESULT=$(npm run test)
+          TEST_RESULT_CODE=$?
+          echo $TEST_RESULT
+          LINT_RESULT=$(npm run lint)
+          LINT_RESULT_CODE=$?
+          echo $LINT_RESULT
+          RESULTS_CODE=$((TEST_RESULT_CODE+LINT_RESULT_CODE))
+          
           if [ $RESULTS_CODE = 0 ]; then
             gh api -X POST -f state="success" -f description="Testing and linting has successed" -f context="Testing and linting bot" /repos/${OWNER}/${REPO}/statuses/${SHA}
           else
             gh api -X POST -f state="failure" -f description="Testing and linting has failed" -f context="Testing and linting bot" /repos/${OWNER}/${REPO}/statuses/${SHA}
           fi
+          
         shell: bash
