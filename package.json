@@ -14,9 +14,9 @@
     "require": "./dist/floatCaluclator.umd.cjs"
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "vite build && tsc",
     "test": "npm run build && vitest run",
-	"lint": "bash ./lint.sh"
+	"lint": "bash ./dev_utils/lint.sh"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.2.0",
