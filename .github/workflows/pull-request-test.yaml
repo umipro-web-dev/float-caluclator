@@ -19,20 +19,26 @@ jobs:
         with: 
           node-version: 20.x
       - run: |
+          # npm install の軽量版。
           npm ci
+
           echo ${OWNER}
+
           TEST_RESULT=$(npm run test)
+          # $? は直前のコマンドの実行結果が代入される変数
           TEST_RESULT_CODE=$?
           echo $TEST_RESULT
           LINT_RESULT=$(npm run lint)
           LINT_RESULT_CODE=$?
           echo $LINT_RESULT
+          # 2つのコードが両方0であることを確認する。
           RESULTS_CODE=$((TEST_RESULT_CODE+LINT_RESULT_CODE))
           
           if [ $RESULTS_CODE = 0 ]; then
+            # プルリクのheadコミットにテスト結果を付与する。
             gh api -X POST -f state="success" -f description="Testing and linting has successed" -f context="Testing and linting bot" /repos/${OWNER}/${REPO}/statuses/${SHA}
           else
             gh api -X POST -f state="failure" -f description="Testing and linting has failed" -f context="Testing and linting bot" /repos/${OWNER}/${REPO}/statuses/${SHA}
           fi
-          
+
         shell: bash
