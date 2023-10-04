@@ -1,7 +1,7 @@
 import sum from "@methods/sum"
 import diff from "@methods/diff"
-import multi from "@methods/multi"
-import devide from "@methods/devide"
+import product from "@/methods/product"
+import quotient from "@/methods/quotient"
 
 const floatCaluclator = {
 	/**
@@ -18,10 +18,19 @@ const floatCaluclator = {
 	 * This function outputs the exact difference of fractional numbers.
 	 */
 	diff,
-
-	multi,
-
-	devide
+	/**
+	 * @param {...number} floatNums
+	 * @returns {number}
+	 * This function outputs the exact product of fractional numbers.
+	 */
+	product,
+	/**
+	 * @param {...number} floatNums
+	 * @returns {number}
+	 * 
+	 * This function outputs the exact quotient of fractional numbers.
+	 */
+	quotient
 } as const
 
 export default floatCaluclator
