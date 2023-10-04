@@ -29,8 +29,8 @@ jobs:
       - run: RESULTS_CODE=$((TEST_RESULT_CODE+LINT_RESULT_CODE))
       - run: |
           if [ $RESULTS_CODE = 0 ]; then
-            gh api -X POST -f state="success" -f description="Testing and linting has successed" /repos/${OWNER}/${REPO}/statuses/${SHA}
+            gh api -X POST -f state="success" -f description="Testing and linting has successed" -f context="Testing and linting bot" /repos/${OWNER}/${REPO}/statuses/${SHA}
           else
-            gh api -X POST -f state="failure" -f description="Testing and linting has failed" /repos/${OWNER}/${REPO}/statuses/${SHA}
+            gh api -X POST -f state="failure" -f description="Testing and linting has failed" -f context="Testing and linting bot" /repos/${OWNER}/${REPO}/statuses/${SHA}
           fi
         shell: bash
